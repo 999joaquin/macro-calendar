@@ -111,7 +111,7 @@ def write_excel(live_df, static_df):
     
     mode = "a" if EXCEL_FILE.exists() else "w"
     print(f"→ Writing to {EXCEL_FILE} ({'update' if mode=='a' else 'create'}) …")
-    with pd.ExcelWriter(EXCEL_FILE, engine="openpyxl", mode=mode,
+    with pd.ExcelWriter(EXCEL_FILE, engine="openpyxl", mode="a",
                         if_sheet_exists="replace") as xls:
         combined.to_excel(xls, sheet_name="Calendar", index=False)
 
